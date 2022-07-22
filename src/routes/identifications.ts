@@ -56,7 +56,9 @@ export const patchIdentification = async (req, res) => {
     startUrl = `https://api.test.idnow.de/api/v1/kontist/identifications/${identificationId}/start`;
 
     if (!process.env.MOCKSOLARIS_DISABLE_IDNOW_TESTSERVER) {
-      const response = await fetch(createUrl, {
+      const response = await /* TODO: JSFIX could not patch the breaking change:
+      req.body can no longer be a string*/
+      fetch(createUrl, {
         method: "POST",
         headers: {
           "X-API-KEY": "0A0KQ6KGHUAEN0RLRHLB3V3S840ZWH7ZVXE2WYZ0",

@@ -93,7 +93,9 @@ export const triggerWebhook = async (type, payload, extraHeaders = {}) => {
     };
   }
 
-  await fetch(webhook.url, {
+  await /* TODO: JSFIX could not patch the breaking change:
+  req.body can no longer be a string*/
+  fetch(webhook.url, {
     method: "POST",
     body: JSON.stringify(body),
     headers,
